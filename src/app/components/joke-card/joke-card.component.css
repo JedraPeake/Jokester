@@ -1,6 +1,7 @@
 .mat-card {
 	background: #FFE6E2;
 	border-radius: 16px;
+	padding: 24px;
 }
 
 .mat-card-title {

@@ -12,10 +12,10 @@ import { Joke } from '../../models/joke';
 })
 export class JokeParentComponent implements OnInit {
 
-  private jokeList = new BehaviorSubject<Joke[]>([]);
+  jokeList$ = new BehaviorSubject<Joke[]>([]);
   constructor(private jokeApiSvc: JokeApiService) { }
 
   ngOnInit(): void {
-    this.jokeApiSvc.getJokes().subscribe(res => this.jokeList.next(res));
+    this.jokeApiSvc.getJokes().subscribe(res => this.jokeList$.next(res));
   }
 }
