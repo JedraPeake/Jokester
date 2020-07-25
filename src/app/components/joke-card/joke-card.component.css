@@ -1,20 +1,40 @@
 .mat-card {
+	padding: 24px;
 	background: #FFE6E2;
 	border-radius: 16px;
-	padding: 24px;
 }
 
-.mat-card-title {
+.setup {
 	font-family: "Roboto";
 	font-style: normal;
 	font-weight: 500;
 	font-size: 16px;
 }
 
-.mat-card-content {
+.punch {
 	font-family: "Roboto";
 	font-style: normal;
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 22px;
+}
+
+.def {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.green {
+ background: #7DE4A6;;
+}
+
+.red {
+	background: #FA8775;
+}
+
+.flexContainer {
+	display: flex;
+}
+
+.likeButton {
+	flex: 1 0;
 }

@@ -1,14 +1,18 @@
-<mat-card fxLayout="row">
+<mat-card>
   <mat-card-content>
-    <p>
+    <p class="setup">
       {{ jokeItem.setup }}
     </p>
-    <p>
+    <p class="punch">
       {{ jokeItem.punchline }}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <div class="flexContainer">
+      <div class="likeButton">
+        <button (click)="likeJoke()" mat-button [ngClass]="(jokeItem.review =='1')?'green':'def'">LIKE</button>
+      </div>
+      <button (click)="dislikeJoke()" mat-button [ngClass]="(jokeItem.review =='-1')?'red':'def'">SHARE</button>
+    </div>
   </mat-card-actions>
 </mat-card>

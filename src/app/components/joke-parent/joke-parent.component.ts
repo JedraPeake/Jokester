@@ -16,6 +16,6 @@ export class JokeParentComponent implements OnInit {
   constructor(private jokeApiSvc: JokeApiService) { }
 
   ngOnInit(): void {
-    this.jokeApiSvc.getJokes().subscribe(res => this.jokeList$.next(res));
+    this.jokeList$ = this.jokeApiSvc.getJokes();
   }
 }

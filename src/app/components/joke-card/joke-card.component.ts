@@ -15,4 +15,12 @@ export class JokeCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  likeJoke() {
+    this.jokeItem.review = 1;
+  }
+
+  dislikeJoke() {
+    this.jokeItem.review = -1;
+  }
+
 }
