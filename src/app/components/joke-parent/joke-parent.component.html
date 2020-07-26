@@ -1,6 +1,6 @@
 <ng-container *ngIf="(jokeList$ | async) as jokeList; else loading">
 	<ng-container *ngFor="let jokeItem of jokeList">
-		<app-joke-card [jokeItem]="jokeItem"></app-joke-card>
+		<app-joke-card [jokeItem]="jokeItem" (jokeChange)="updateLocalStorage()"></app-joke-card>
 	</ng-container>
 </ng-container>
 

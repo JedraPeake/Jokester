@@ -17,16 +17,26 @@ export class JokeApiService {
   constructor(private http: HttpClient) { }
 
   getJokes() {
-    this.http.get<Joke[]>('https://official-joke-api.appspot.com/random_ten')
+    const localStorageItem = this.getLocalStorage();
+    if (localStorageItem != null) {
+      this.jokeList$.next(localStorageItem);
+    } else {
+      this.http.get<Joke[]>('https://official-joke-api.appspot.com/random_ten')
       .pipe(take(1))
-      .subscribe(res => this.jokeList$.next(res));
+      .subscribe(res => {
+        this.jokeList$.next(res);
+        this.setLocalStorage(res);
+      });
+    }
 
     return this.jokeList$;
   }
 
-  updateJokeItem(item: Joke) {
-    let currentJokes = this.jokeList$.getValue();
+  setLocalStorage(jokes: Joke[]) {
+    localStorage.setItem('jokeStorage', JSON.stringify(jokes));
+  }
 
-    this.jokeList$.next(currentJokes);
+  getLocalStorage() {
+    return JSON.parse(localStorage.getItem('jokeStorage'));
   }
 }

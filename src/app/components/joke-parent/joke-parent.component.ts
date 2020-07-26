@@ -18,4 +18,8 @@ export class JokeParentComponent implements OnInit {
   ngOnInit(): void {
     this.jokeList$ = this.jokeApiSvc.getJokes();
   }
+
+  updateLocalStorage(): void {
+    this.jokeApiSvc.setLocalStorage(this.jokeList$.getValue());
+  }
 }
