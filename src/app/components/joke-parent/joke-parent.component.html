@@ -1,7 +1,9 @@
 <ng-container *ngIf="(jokeList$ | async) as jokeList; else loading">
-	<ng-container *ngFor="let jokeItem of jokeList">
-		<app-joke-card [jokeItem]="jokeItem" (jokeChange)="updateLocalStorage()"></app-joke-card>
-	</ng-container>
+	<div class="flexContainer">
+		<ng-container *ngFor="let jokeItem of jokeList">
+			<app-joke-card class="gap" [jokeItem]="jokeItem" (jokeChange)="updateLocalStorage()"></app-joke-card>
+		</ng-container>
+	</div>
 </ng-container>
 
 <ng-template #loading>
