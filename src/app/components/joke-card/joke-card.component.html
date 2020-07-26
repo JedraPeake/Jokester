@@ -10,9 +10,9 @@
   <mat-card-actions>
     <div class="flexContainer">
       <div class="likeButton">
-        <button (click)="likeJoke()" mat-button [ngClass]="(jokeItem.review =='1')?'green':'def'">LIKE</button>
+        <button (click)="likeJoke()" mat-button [ngClass]="(jokeItem.review ===1)?'green':'def'">LIKE</button>
       </div>
-      <button (click)="dislikeJoke()" mat-button [ngClass]="(jokeItem.review =='-1')?'red':'def'">SHARE</button>
+      <button (click)="dislikeJoke()" mat-button [ngClass]="(jokeItem.review ==-1)?'red':'def'">SHARE</button>
     </div>
   </mat-card-actions>
 </mat-card>
