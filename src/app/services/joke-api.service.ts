@@ -22,11 +22,13 @@ export class JokeApiService {
       this.jokeList$.next(localStorageItem);
     } else {
       this.http.get<Joke[]>('https://official-joke-api.appspot.com/random_ten')
-      .pipe(take(1))
-      .subscribe(res => {
-        this.jokeList$.next(res);
-        this.setLocalStorage(res);
-      });
+        .pipe(take(1))
+        .subscribe(res => {
+          res.push(this.getFavouriteJoke());
+
+          this.jokeList$.next(res);
+          this.setLocalStorage(res);
+        });
     }
 
     return this.jokeList$;
@@ -38,5 +40,15 @@ export class JokeApiService {
 
   getLocalStorage() {
     return JSON.parse(localStorage.getItem('jokeStorage'));
+  }
+
+  getFavouriteJoke() {
+    const favouriteJoke = new Joke();
+    favouriteJoke.id = -1;
+    favouriteJoke.punchline = 'One was assaulted';
+    favouriteJoke.setup = 'Two peanuts were walking down the street';
+    favouriteJoke.review = 0;
+
+    return favouriteJoke;
   }
 }
